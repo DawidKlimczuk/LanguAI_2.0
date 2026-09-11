@@ -69,25 +69,29 @@ Nowoczesna, pełnoprawna platforma webowa do nauki języków obcych nowej genera
 
 ## 📦 Uruchomienie lokalne
 
-### 1. Sklonuj repozytorium
 ```bash
+1. Sklonuj repozytorium
 git clone [https://github.com/DawidKlimczuk/LanguAI_2.0.git](https://github.com/DawidKlimczuk/LanguAI_2.0.git)
 cd LanguAI_2.0
+
 2. Zainstaluj zależności
 Bash
 npm install
+
 3. Skonfiguruj zmienne środowiskowe
 Utwórz plik .env w głównym katalogu projektu:
-
 Fragment kodu
 DATABASE_URL="postgresql://user:password@host:6543/postgres?pgbouncer=true"
 DIRECT_URL="postgresql://user:password@host:5432/postgres"
 GEMINI_API_KEY="twoj_klucz_gemini_api"
+
 4. Zsynchronizuj schemat bazy danych
 Bash
 npx prisma db push
 npx prisma generate
+
 5. Uruchom serwer developerski
 Bash
 npm run dev
+
 Aplikacja będzie dostępna pod adresem: http://localhost:3000.
