@@ -7,6 +7,7 @@
 Nowoczesna, pełnoprawna platforma webowa do nauki języków obcych nowej generacji. Aplikacja łączy model generatywny sztucznej inteligencji (**Google Gemini API**) z rozbudowanym systemem grywalizacji, sklepem, rankingami oraz pełną lokalizacją wielojęzyczną (i18n).
 
 > **LanguAI 2.0 to kompletny przepis architektury (Full Rewrite)** — ewolucja z monolitycznego projektu opartego na PHP/Vanilla JS do nowoczesnego stosu opartego na Next.js App Router, TypeScript, Tailwind CSS oraz Prisma ORM na chmurze Supabase/Vercel.
+> Link do 1 wersji: https://github.com/DawidKlimczuk/LanguAI
 
 ---
 
@@ -26,22 +27,22 @@ Nowoczesna, pełnoprawna platforma webowa do nauki języków obcych nowej genera
 
 ## 🧠 Główne funkcjonalności
 
-### 1. Inteligentny Silnik Nauki (Gemini AI Engine)
+### 1. Inteligentny Silnik Nauki (Gemini AI)
 * **Paczki pytań w czasie rzeczywistym:** Integracja z Google Gemini API generuje zoptymalizowane, 20-elementowe pule pytań w formacie JSON, eliminując opóźnienia sieciowe przy przechodzeniu między zadaniami.
 * **6 języków nauki:** Angielski, Niemiecki, Hiszpański, Włoski, Francuski oraz Polski.
 * **Obsługa pomijania (Skip Tokens):** Możliwość zużycia zakupionych żetonów pominięcia do przejścia trudnego pytania z automatycznym fetchowaniem kolejnej puli.
 
-### 2. Grywalizacja (Gamification Engine)
+### 2. Grywalizacja
 * **System Serc:** Mechanizm 5 żyć regenerowanych po błędach lub odnawianych w sklepie.
 * **XP, Poziomy i Pasek Postępu:** Doświadczenie przyznawane dynamicznie za serie poprawnych odpowiedzi i ukończone moduły.
 * **Ekonomia wirtualna (Gemy):** Waluta zdobywana za aktywność, umożliwiająca zakupy ulepszeń i customizacji.
 * **Osiągnięcia:** System dynamicznych odznak i powiadomień nagradzających kamienie milowe.
 
-### 3. Rywalizacja i Społeczność (Leaderboards)
+### 3. Rywalizacja i Społeczność 
 * Tabele wyników aktualizowane w czasie rzeczywistym.
 * Filtrowanie rankingu pod kątem poziomu doświadczenia (XP), zamożności (Gemy) oraz postępów w poszczególnych językach.
 
-### 4. Sklep i Personalizacja (Shop & Themes)
+### 4. Sklep i Personalizacja
 * Zakup pakietów odnawiania serc oraz żetonów natychmiastowego pomijania pytań.
 * Motywy graficzne aktywowane bezpośrednio z bazy danych użytkownika.
 
@@ -52,7 +53,7 @@ Nowoczesna, pełnoprawna platforma webowa do nauki języków obcych nowej genera
 
 ---
 
-## 🛠️ Stos technologiczny (Tech Stack)
+## 🛠️ Stos technologiczny 
 
 * **Framework:** [Next.js](https://nextjs.org/) (React, App Router)
 * **Język:** [TypeScript](https://www.typescriptlang.org/)
