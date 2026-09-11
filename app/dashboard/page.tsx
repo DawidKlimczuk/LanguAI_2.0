@@ -615,12 +615,12 @@ export default function DashboardPage() {
             className="md:hidden p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white"
             aria-label="Otwórz menu"
           >
-            <Menu className="w-6 h-6" />
+            <Menu className="w-5 h-5" />
           </button>
 
           <div className="flex items-center gap-2">
-            <span className="text-2xl drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]">🌐</span>
-            <span className={`font-black text-xl tracking-tight bg-linear-to-r ${theme.primaryBtn} bg-clip-text text-transparent`}>
+            <span className="text-xl sm:text-2xl drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]">🌐</span>
+            <span className={`font-black text-lg sm:text-xl tracking-tight bg-linear-to-r ${theme.primaryBtn} bg-clip-text text-transparent`}>
               LanguAI {user.theme === 'gold' && '👑'}
             </span>
           </div>
@@ -672,7 +672,8 @@ export default function DashboardPage() {
 
         {/* Prawy Panel */}
         <div className="flex items-center gap-2 sm:gap-3 font-bold text-sm">
-          <div className="flex items-center gap-1 bg-black/40 p-1 sm:p-1.5 rounded-xl border border-white/10">
+          {/* Flagi widoczne TYLKO na ekranach md w górę (desktop/tablet) */}
+          <div className="hidden md:flex items-center gap-1 bg-black/40 p-1 sm:p-1.5 rounded-xl border border-white/10">
             {flags.map((f) => (
               <button
                 key={f.code}
@@ -691,18 +692,19 @@ export default function DashboardPage() {
             ))}
           </div>
 
-          <div className="flex items-center gap-1 bg-black/40 px-2 sm:px-3 py-1 sm:py-1.5 rounded-xl border border-white/10 text-rose-400 text-xs sm:text-sm">
+          <div className="flex items-center gap-1 bg-black/40 px-2.5 sm:px-3 py-1.5 rounded-xl border border-white/10 text-rose-400 text-xs sm:text-sm">
             <Heart className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-rose-500 text-rose-500" /> {user.hearts}
           </div>
 
-          <div className="flex items-center gap-1 bg-black/40 px-2 sm:px-3 py-1 sm:py-1.5 rounded-xl border border-white/10 text-cyan-400 text-xs sm:text-sm">
+          <div className="flex items-center gap-1 bg-black/40 px-2.5 sm:px-3 py-1.5 rounded-xl border border-white/10 text-cyan-400 text-xs sm:text-sm">
             <Gem className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400" /> {user.gems}
           </div>
 
+          {/* Przycisk wylogowania na pasku widoczny TYLKO na desktopie */}
           <button
             onClick={handleLogout}
             title="Wyloguj się"
-            className="p-1.5 sm:p-2 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/20 text-rose-400 hover:text-rose-300 transition-colors"
+            className="hidden md:flex p-2 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/20 text-rose-400 hover:text-rose-300 transition-colors"
           >
             <LogOut className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
@@ -716,7 +718,7 @@ export default function DashboardPage() {
             className="fixed inset-0 bg-black/80 backdrop-blur-sm"
             onClick={() => setMobileMenuOpen(false)}
           />
-          <div className="relative w-72 max-w-[80%] bg-slate-950/95 border-r border-white/10 p-6 flex flex-col justify-between z-10 shadow-2xl">
+          <div className="relative w-72 max-w-[80%] bg-slate-950/95 border-r border-white/10 p-6 flex flex-col justify-between z-10 shadow-2xl h-full overflow-y-auto">
             <div>
               <div className="flex items-center justify-between mb-6">
                 <span className={`font-extrabold text-lg flex items-center gap-2 ${theme.accentText}`}>
@@ -760,6 +762,7 @@ export default function DashboardPage() {
                 </div>
               </div>
 
+              {/* LINKI GŁÓWNE */}
               <div className="space-y-2">
                 {[
                   { id: 'learn', label: t.learn, icon: BookOpen },
@@ -789,12 +792,15 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            <button
-              onClick={handleLogout}
-              className="flex items-center gap-3 w-full px-4 py-3 rounded-xl text-rose-400 bg-rose-500/10 hover:bg-rose-500/20 font-bold text-sm transition-colors"
-            >
-              <LogOut className="w-5 h-5" /> Wyloguj się
-            </button>
+            {/* PRZYCISK WYLOGUJ NA SAMYM DOLE HAMBURGERA */}
+            <div className="pt-6 mt-6 border-t border-white/10">
+              <button
+                onClick={handleLogout}
+                className="flex items-center justify-center gap-3 w-full px-4 py-3 rounded-xl text-rose-400 bg-rose-500/10 hover:bg-rose-500/20 font-bold text-sm transition-colors"
+              >
+                <LogOut className="w-5 h-5" /> Wyloguj się
+              </button>
+            </div>
           </div>
         </div>
       )}

@@ -304,23 +304,57 @@ function LearnQuizContent() {
   return (
     <div className={`min-h-screen bg-linear-to-br ${theme.bg} ${theme.textColor} flex flex-col justify-between p-4 sm:p-8 transition-colors duration-500`}>
       {/* NAGŁÓWEK QUIZU */}
-      <header className="max-w-3xl w-full mx-auto flex items-center justify-between gap-4">
-        <button
-          onClick={() => router.push('/dashboard')}
-          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-black/40 hover:bg-black/60 border border-white/10 font-bold text-xs sm:text-sm transition-all"
-        >
-          <ArrowLeft className="w-4 h-4" /> {t.exit}
-        </button>
+      <header className="max-w-3xl w-full mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-3 bg-black/30 md:bg-transparent p-3 md:p-0 rounded-2xl border border-white/10 md:border-none backdrop-blur-md md:backdrop-blur-none">
+        
+        {/* RZĄD 1 (Na mobile: Góra | Na PC: Lewa i Prawa strona wokół paska) */}
+        <div className="flex items-center justify-between w-full md:w-auto gap-3">
+          {/* Przycisk powrotu */}
+          <button
+            onClick={() => router.push('/dashboard')}
+            className="flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-black/40 hover:bg-black/60 border border-white/10 font-bold text-xs sm:text-sm transition-all text-slate-200"
+          >
+            <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> 
+            <span>{t.exit}</span>
+          </button>
 
-        <div className="flex-1 max-w-md mx-2">
+          {/* Statystyki: Skipy, Gemy, Serca - Na telefonie wyrównane do prawej */}
+          <div className="flex items-center gap-2 sm:gap-3 md:hidden">
+            {(user?.skipCount ?? 0) > 0 && !isAnswered && (
+              <button
+                onClick={handleSkipQuestion}
+                className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 text-amber-300 font-black text-xs transition-all"
+                title="Pomiń to pytanie"
+              >
+                <FastForward className="w-3.5 h-3.5" />
+                <span>{user.skipCount}</span>
+              </button>
+            )}
+
+            <button
+              onClick={() => setShopOpen(true)}
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-black/40 border border-white/10 text-cyan-400 font-bold text-xs"
+            >
+              <ShoppingBag className="w-3.5 h-3.5" />
+              <span>{user?.gems ?? 0}</span>
+            </button>
+
+            <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-black/40 border border-white/10 text-rose-400 font-bold text-xs">
+              <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500" />
+              <span>{user?.hearts ?? 0}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* RZĄD 2 NA MOBILE / ŚRODEK NA PC: Pasek postępu i numer pytania */}
+        <div className="w-full md:flex-1 md:max-w-md md:mx-4">
           <div className="flex justify-between items-center text-xs font-black mb-1.5 px-1">
             <span className={`flex items-center gap-1.5 ${theme.accentText}`}>
               <GraduationCap className="w-4 h-4" />
               {cefrCode} • {t.question} {qIndex + 1} / 20
             </span>
-            <span>{Math.round(((qIndex + 1) / 20) * 100)}%</span>
+            <span className="text-slate-400 font-bold">{Math.round(((qIndex + 1) / 20) * 100)}%</span>
           </div>
-          <div className="w-full bg-black/50 h-3 rounded-full border border-white/10 overflow-hidden p-0.5">
+          <div className="w-full bg-black/50 h-2.5 sm:h-3 rounded-full border border-white/10 overflow-hidden p-0.5">
             <div
               className={`bg-linear-to-r ${theme.primaryBtn} h-full rounded-full transition-all duration-500`}
               style={{ width: `${((qIndex + 1) / 20) * 100}%` }}
@@ -328,7 +362,8 @@ function LearnQuizContent() {
           </div>
         </div>
 
-        <div className="flex items-center gap-2 sm:gap-3">
+        {/* PRAWA STRONA NA PC (Ukryta na telefonie, bo przeniesiona do rzędu 1) */}
+        <div className="hidden md:flex items-center gap-2 sm:gap-3">
           {(user?.skipCount ?? 0) > 0 && !isAnswered && (
             <button
               onClick={handleSkipQuestion}
