@@ -1,5 +1,5 @@
 # 🌍 LanguAI 2.0 — AI-Powered Language Learning Platform
-
+## 🌐 https://languai-2-0.vercel.app/
 <img width="1919" height="912" alt="image" src="https://github.com/user-attachments/assets/08caf6ed-eeb4-4411-84c4-2783513add60" />
 <img width="906" height="865" alt="image" src="https://github.com/user-attachments/assets/c7da9b4e-45ab-4340-a2f9-219d9a974ca1" />
 
